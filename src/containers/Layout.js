@@ -12,6 +12,7 @@ import createLogger from 'redux-logger';
 import IndexComponent from '../components/index';
 import * as reducers from '../reducers';
 import * as TodoActions from '../actions';
+
 const logger = createLogger()
 const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
 const reducer = combineReducers(reducers);

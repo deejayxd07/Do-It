@@ -22,11 +22,9 @@ const store = createStore(
 export default class App extends Component {
   render() {
     return (
-      <View style={{flex:1}}>
-        <Provider store={store}>
-          <Layout />
-        </Provider>
-      </View>
+      <Provider store={store}>
+        <Layout />
+      </Provider>
     );
   }
 }
