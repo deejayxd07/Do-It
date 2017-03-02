@@ -30,25 +30,25 @@ export default class Index extends Component {
 	render() {
 		const { todos } = this.props;
 		return (
-			<View style={{flex: 1, flexDirection: 'column'}}>
-				<View style={{flexDirection: 'row'}}>
-					<TextInput 
-						style={{height: 40, flex: 0.7}}
-		        onChangeText={(text) => this.setState({text})}
-		        value={this.state.text}
-		        onKeyDown={() => this.handleKeyDown}
-		      />
-
-		      <View style={{flex: 0.3}}>
-						<Button
-						  onPress={() => this.handleButtonPress()}
-						  title="Add"
-						  color="#841584"
-						/>
+			<View style={{flex: 1, flexDirection: 'column', backgroundColor: '#fff'}}>
+				<View 
+					style={{
+						flex: 0.15,
+						flexDirection: 'row',
+					  backgroundColor: '#FCFCFF',
+					  borderBottomColor: '#EBF1F6',
+					  borderBottomWidth: 1
+					}}
+				>
+					<View 
+						style={{flex: 1, flexDirection: 'row', padding: 20}}
+					>
+						<Text style={{flex: 0.7, color: '#666AFB', fontSize: 20}}>Do It!</Text>
+						<Text style={{flex: 0.3, color: '#B8B9D4'}}>12 Tasks</Text>
 					</View>
 				</View>
 
-				<View style={{flex: 1}}>
+				<View style={{flex: 0.8, paddingTop: 10}}>
 					{todos.map(todo => 
 						<TodoItem todo={todo} key={todo.id} />
 					)}	
