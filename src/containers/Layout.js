@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import IndexComponent from '../components/index';
 import * as TodoActions from '../actions';
-
 
 const Layout = ({todos, actions}) => (
   <IndexComponent todos={todos} actions={actions}/>

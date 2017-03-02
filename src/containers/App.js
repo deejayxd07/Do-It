@@ -15,7 +15,6 @@ import allReducers from '../reducers';
 import {persistStore, autoRehydrate} from 'redux-persist'
 import { Router, nativeHistory, StackRoute, Route } from 'react-router-native';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import { routes } from '../routes';
 
 const logger = createLogger()
 const store = createStore(
