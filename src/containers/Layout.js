@@ -7,23 +7,14 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers, bindActionCreators } from 'redux';
-import createLogger from 'redux-logger';
+import { bindActionCreators } from 'redux';
 import IndexComponent from '../components/index';
-import * as reducers from '../reducers';
 import * as TodoActions from '../actions';
-
-const logger = createLogger()
-const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
-const reducer = combineReducers(reducers);
-const store = createStoreWithMiddleware(reducer);
 
 
 const Layout = ({todos, actions}) => (
   <IndexComponent todos={todos} actions={actions}/>
 );
-
-
 
 const mapStateToProps = (state) => ({
   todos: state.todos
