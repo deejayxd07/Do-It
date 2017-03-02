@@ -13,6 +13,9 @@ import createLogger from 'redux-logger';
 import Layout from './Layout';
 import allReducers from '../reducers';
 import {persistStore, autoRehydrate} from 'redux-persist'
+import { Router, nativeHistory, StackRoute, Route } from 'react-router-native';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { routes } from '../routes';
 
 const logger = createLogger()
 const store = createStore(
@@ -24,14 +27,21 @@ const store = createStore(
   )
 )
 
+
 persistStore(store, {storage: AsyncStorage});
+const history = syncHistoryWithStore(nativeHistory, store)
+history.push('/')
 
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Layout />
+        <Router history={history}>
+          <StackRoute path="app" component={Layout}>
+            <Route path="/" component={Layout} />
+          </StackRoute>
+        </Router>
       </Provider>
     );
   }
