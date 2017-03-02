@@ -3,12 +3,8 @@ import { View, Text, TouchableHighlight } from 'react-native';
 import { CheckBox } from 'native-base';
 
 export default class TodoItem extends Component {
-	state = {
-		checked: false
-	}
-
 	render() {
-		const { todo } = this.props;
+		const { todo, actions } = this.props;
 		return (
 			<View 
 				style={{
@@ -19,11 +15,12 @@ export default class TodoItem extends Component {
 				}}
 			>
 				<CheckBox 
-					checked={this.state.checked} 
+					checkboxTickColor='#FF8147'
+					checked={todo.completed}
 				/>
 				<Text 
 					style={{fontSize: 15, paddingLeft: 25}}
-					onPress={() => this.setState({checked: !this.state.checked})}
+					onPress={() => actions.completeTodo(todo.id)}
 				>{todo.text}</Text>
 			</View>
 		)
