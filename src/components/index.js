@@ -5,11 +5,12 @@ import {
   ScrollView,
   TextInput,
   ToastAndroid,
-  Text,
   Keyboard
 } from 'react-native';
-import { Fab, Icon, Button, Footer, FooterTab } from 'native-base';
+
+import { Fab, Icon, Button, Footer, FooterTab, Text } from 'native-base';
 import TodoItem from './TodoItem';
+import CreateTodo from './CreateTodo';
 
 const SHOW_ALL = 'show_all';
 const SHOW_UNFINISHED = 'show_unfinished';
@@ -22,23 +23,24 @@ const TODO_FILTERS = {
 }
 
 export default class Index extends Component {
-	state = {
-		text: '',
-		filter: SHOW_UNFINISHED
+	constructor(props) {
+	  super(props);
+	
+	  this.state = {
+			filter: SHOW_UNFINISHED,
+			openModal: false
+
+	  };
+
+	  this.openModalHandler = this.openModalHandler.bind(this)
 	}
 
-	handleButtonPress = (e) => {
+  openModalHandler(openModal) {
+		this.setState({
+			openModal: openModal
+		});
+  }
 
-		if (this.state.text.length > 0) {
-			this.props.actions.addTodo(this.state.text);
-			this.setState({
-				text: ''
-			});
-			Keyboard.dismiss();
-		} else {
-			ToastAndroid.show('Put something on the input field.', ToastAndroid.SHORT);
-		}
-	}
 	render() {
 		const { todos, actions } = this.props;
 		let uncompletedTasks = 0;
@@ -81,30 +83,35 @@ export default class Index extends Component {
 					{todoList}
 				</ScrollView>
 
-
         <Fab
-          style={{ backgroundColor: '#FF8147', bottom: 20 }}
+          style={{ backgroundColor: '#FF8147', bottom: 20, zIndex: 1 }}
           position="bottomRight"
+          onPress={() => this.setState({openModal: true})}
         >
           <Icon name="add" />
         </Fab>
 
-        <Footer>
+        <CreateTodo 
+	        actions={actions}
+        	openModalHandler={this.openModalHandler}
+	        openModal={this.state.openModal} />
+
+        <Footer style={{zIndex: 1}}>
 	        <FooterTab style={{backgroundColor: '#FF8147'}}>
 	          <Button
 							onPress={() => this.setState({filter: SHOW_UNFINISHED})}
 	          >
-              <Text style={{color: '#fff'}}>Unfinished</Text>
+              <Text style={{color: '#fff', fontSize: 13}}>Unfinished</Text>
 	          </Button>
 	          <Button
 							onPress={() => this.setState({filter: SHOW_ALL})}
 	          >
-              <Text style={{color: '#fff'}}>All</Text>
+              <Text style={{color: '#fff', fontSize: 13}}>All</Text>
 	          </Button>
 	          <Button 
 	          	onPress={() => this.setState({filter: SHOW_COMPLETED})}
 	          >
-              <Text style={{color: '#fff'}}>Finished</Text>
+              <Text style={{color: '#fff', fontSize: 13}}>Finished</Text>
 	          </Button>
 	        </FooterTab>
         </Footer>
