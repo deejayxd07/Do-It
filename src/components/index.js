@@ -12,9 +12,10 @@ import { Fab, Icon, Button, Footer, FooterTab, Text } from 'native-base';
 import TodoItem from './TodoItem';
 import CreateTodo from './CreateTodo';
 
-const SHOW_ALL = 'show_all';
-const SHOW_UNFINISHED = 'show_unfinished';
-const SHOW_COMPLETED = 'show_completed';
+const SHOW_ALL = 'All Tasks';
+const SHOW_UNFINISHED = 'Unfinished Tasks';
+const SHOW_COMPLETED = 'Finished Tasks';
+const themeColor = '#FF8147';
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,
@@ -68,10 +69,10 @@ export default class Index extends Component {
 					<View 
 						style={{flex: 1, flexDirection: 'row', padding: 20, justifyContent: 'space-between'}}
 					>
-						<Text style={{color: '#FF8147', fontSize: 20}}>Do It!</Text>
+						<Text style={{color: themeColor, fontSize: 20}}>DO IT!</Text>
 						<Text 
 							style={{
-								color: '#FF8147',
+								color: themeColor,
 								paddingTop: 5,
 								fontSize: 16
 							}}
@@ -80,11 +81,14 @@ export default class Index extends Component {
 				</View>
 
 				<ScrollView style={{flex: 0.8, paddingTop: 10}}>
+					<View style={{flexDirection: 'row', justifyContent: 'center', paddingBottom: 10}}>
+						<Text style={{color: themeColor}}>{this.state.filter}</Text>
+					</View>
 					{todoList}
 				</ScrollView>
 
         <Fab
-          style={{ backgroundColor: '#FF8147', bottom: 20, zIndex: 1 }}
+          style={{ backgroundColor: themeColor, bottom: 20, zIndex: 1 }}
           position="bottomRight"
           onPress={() => this.setState({openModal: true})}
         >
@@ -97,7 +101,7 @@ export default class Index extends Component {
 	        openModal={this.state.openModal} />
 
         <Footer style={{zIndex: 1}}>
-	        <FooterTab style={{backgroundColor: '#FF8147'}}>
+	        <FooterTab style={{backgroundColor: themeColor}}>
 	          <Button
 							onPress={() => this.setState({filter: SHOW_UNFINISHED})}
 	          >

@@ -47,7 +47,7 @@ export default class CreateTodo extends Component {
 		    }}>
 
 		    <View>
-         		<Text>Add new things to do!</Text>
+         		<Text>Add new a task!</Text>
 			      <TextInput
 			        style={{height: 50}}
 			        spellCheck={true}
