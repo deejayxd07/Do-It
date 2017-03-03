@@ -1,15 +1,21 @@
 import { ADD_TODO, DELETE_TODO, COMPLETE_TODO } from '../constants';
 const initialState = [
   {
-    text: 'Apply Redux',
-    completed: false,
+    text: 'Build Something Amazing',
+    completed: true,
     id: 0
   },
   {
-    text: 'Develop Awesome Apps',
+    text: 'Learn New Things',
     completed: false,
     id: 1
   },
+  {
+    text: 'Watch Animes!',
+    completed: false,
+    id: 2
+  },
+
 ]
 
 
