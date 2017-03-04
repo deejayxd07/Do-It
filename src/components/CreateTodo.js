@@ -47,21 +47,21 @@ export default class CreateTodo extends Component {
 		    }}>
 
 		    <View>
-         		<Text>Add new a task!</Text>
-			      <TextInput
-			        style={{height: 50}}
-			        spellCheck={true}
-			        onChangeText={(text) => this.setState({text})}
-			        value={this.state.text}
-			        autoFocus={true}
-			      />
-			      <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-				      <Button 
-				      	onPress={() => this.handleButtonPress()}
-					      style={{backgroundColor: '#FF8147'}}>
-				      	<Text>Save</Text>
-				      </Button>
-			      </View>
+       		<Text>Add new a task!</Text>
+		      <TextInput
+		        style={{height: 50}}
+		        spellCheck={true}
+		        onChangeText={(text) => this.setState({text})}
+		        value={this.state.text}
+		        autoFocus={true}
+		      />
+		      <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+			      <Button 
+			      	onPress={() => this.handleButtonPress()}
+				      style={{backgroundColor: '#FF8147'}}>
+			      	<Text>Save</Text>
+			      </Button>
+		      </View>
 		    </View>
 			</Modal>
 		)
