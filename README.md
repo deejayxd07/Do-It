@@ -1,6 +1,6 @@
 # Do It!
 
-A persitent Todo app made with react-native, redux and redux persist.
+A serverless Todo app made with react-native, redux and async storage.
 
 <img src="http://g.recordit.co/S4So3zauBY.gif" width="300" />
 
