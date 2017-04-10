@@ -5,10 +5,12 @@ import {
   ScrollView,
   TextInput,
   ToastAndroid,
-  Keyboard
+	TouchableHighlight,
+  Keyboard,
+	Text,
 } from 'react-native';
 
-import { Fab, Icon, Button, Footer, FooterTab, Text } from 'native-base';
+import { Fab, Icon } from 'native-base';
 import TodoItem from './TodoItem';
 import CreateTodo from './CreateTodo';
 
@@ -26,7 +28,7 @@ const TODO_FILTERS = {
 export default class Index extends Component {
 	constructor(props) {
 	  super(props);
-	
+
 	  this.state = {
 			filter: SHOW_UNFINISHED,
 			openModal: false
@@ -57,7 +59,7 @@ export default class Index extends Component {
 
 		return (
 			<View style={{flex: 1, flexDirection: 'column', backgroundColor: '#fff'}}>
-				<View 
+				<View
 					style={{
 						flex: 0.15,
 						flexDirection: 'row',
@@ -66,14 +68,14 @@ export default class Index extends Component {
 					  borderBottomWidth: 1
 					}}
 				>
-					<View 
+					<View
 						style={{flex: 1, flexDirection: 'row', padding: 20, justifyContent: 'space-between'}}
 					>
 						<Text style={{color: themeColor, fontSize: 20}}>DO IT!</Text>
-						<Text 
+						<Text
 							style={{
 								color: themeColor,
-								paddingTop: 5,
+								paddingTop: 10,
 								fontSize: 16
 							}}
 						>{uncompletedTasks} Unfinished Tasks</Text>
@@ -95,30 +97,26 @@ export default class Index extends Component {
           <Icon name="add" />
         </Fab>
 
-        <CreateTodo 
+        <CreateTodo
 	        actions={actions}
         	openModalHandler={this.openModalHandler}
 	        openModal={this.state.openModal} />
 
-        <Footer style={{zIndex: 1}}>
-	        <FooterTab style={{backgroundColor: themeColor}}>
-	          <Button
-							onPress={() => this.setState({filter: SHOW_UNFINISHED})}
-	          >
-              <Text style={{color: '#fff', fontSize: 13}}>Unfinished</Text>
-	          </Button>
-	          <Button
-							onPress={() => this.setState({filter: SHOW_ALL})}
-	          >
-              <Text style={{color: '#fff', fontSize: 13}}>All</Text>
-	          </Button>
-	          <Button 
-	          	onPress={() => this.setState({filter: SHOW_COMPLETED})}
-	          >
-              <Text style={{color: '#fff', fontSize: 13}}>Finished</Text>
-	          </Button>
-	        </FooterTab>
-        </Footer>
+				<View style={{flex: 0.12, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: themeColor}}>
+					<TouchableHighlight style={{padding: 23, paddingTop: 21}} onPress={() => this.setState({filter: SHOW_UNFINISHED})}>
+						<Text style={{color: '#fff', fontSize: 13}}>Unfinished</Text>
+					</TouchableHighlight>
+
+
+					<TouchableHighlight style={{padding: 23, paddingTop: 21}} onPress={() => this.setState({filter: SHOW_ALL})}>
+						<Text style={{color: '#fff', fontSize: 13}}>All</Text>
+					</TouchableHighlight>
+
+
+					<TouchableHighlight style={{padding: 23, paddingTop: 21}} onPress={() => this.setState({filter: SHOW_COMPLETED})}>
+						<Text style={{color: '#fff', fontSize: 13}}>Finished</Text>
+					</TouchableHighlight>
+				</View>
 			</View>
 		)
 	}

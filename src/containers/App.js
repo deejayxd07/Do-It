@@ -20,7 +20,7 @@ const logger = createLogger()
 const store = createStore(
   allReducers,
   undefined,
-  compose( 
+  compose(
     applyMiddleware(logger),
     autoRehydrate()
   )

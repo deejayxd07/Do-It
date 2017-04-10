@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-native-simple-modal';
-import { View, TextInput, Keyboard, ToastAndroid } from 'react-native';
-import { Button, Text } from 'native-base';
+import { View, TextInput, Keyboard, ToastAndroid, Button, Text } from 'react-native';
+
 
 
 export default class CreateTodo extends Component {
@@ -56,10 +56,10 @@ export default class CreateTodo extends Component {
 		        autoFocus={true}
 		      />
 		      <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-			      <Button 
+			      <Button
+							title="Save"
 			      	onPress={() => this.handleButtonPress()}
-				      style={{backgroundColor: '#FF8147'}}>
-			      	<Text>Save</Text>
+							color='#FF8147'>
 			      </Button>
 		      </View>
 		    </View>

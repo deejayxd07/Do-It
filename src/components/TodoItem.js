@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
-import { CheckBox } from 'native-base';
+import CheckBox from 'react-native-check-box';
 
 export default class TodoItem extends Component {
 	render() {
 		const { todo, actions } = this.props;
 		return (
-			<View 
+			<View
 				style={{
-					flexDirection: 'row', 
-					padding: 15, 
-					borderBottomWidth: 1, 
+					flexDirection: 'row',
+					padding: 15,
+					borderBottomWidth: 1,
 					borderBottomColor: '#f2f3f4'
 				}}
 			>
-				<CheckBox 
-					checkboxTickColor='#FF8147'
+				<CheckBox
+					style={{flex: 1, padding: 10}}
+					isChecked={todo.completed}
 					checked={todo.completed}
+					leftText={todo.text}
+					onClick={() => actions.completeTodo(todo.id)}
 				/>
-				<Text 
-					style={{fontSize: 15, paddingLeft: 25}}
-					onPress={() => actions.completeTodo(todo.id)}
-				>{todo.text}</Text>
+
 			</View>
 		)
 	}
